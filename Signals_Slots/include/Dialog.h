@@ -1,0 +1,26 @@
+#ifndef DIALOG_H
+#define DIALOG_H
+
+#include <QDialog>
+#include <QTimer>
+
+QT_BEGIN_NAMESPACE
+namespace Ui{ class Dialog; }
+QT_END_NAMESPACE
+
+class Dialog: public QDialog{
+    Q_OBJECT
+public:
+    explicit Dialog(QDialog *parent = nullptr);
+    ~Dialog();
+
+public slots:
+    void on_timeout();
+
+private:
+    Ui::Dialog *ui;
+    QTimer *m_timer;
+    int m_counter{0};
+};
+
+#endif
