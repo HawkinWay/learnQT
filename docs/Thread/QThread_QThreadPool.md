@@ -1,0 +1,5 @@
+# QThread vs QThreadPool
+
+QThread is the better choice for long-running tasks that may require dedicated threads, whereas QThreadPool is better suited to many short-lived tasks or jobs that need to run concurrently without the overhead of constantly creating new threads. 
+
+QThread is also a better choice for isolated tasks that can report their state and need to be stopped, started, or restarted, and that generally require control over their lifecycle. As a child object of QObject, QThread is ready to be used with signals and slots. In contrast, QRunnable is most suitable for 'fire and forget' tasks. We can add a QObject to the inheritance chain to use signals and slots, but if signaling is required, other mechanisms such as callbacks, QMetaObject::invokeMethod(), or QObject class members should be used instead to avoid the overhead of creating QObjects.
